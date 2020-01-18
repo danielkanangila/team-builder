@@ -36,12 +36,17 @@ function App() {
   }
 
   const save = editedMember => {
-    let member = teamMembers.filter(member => member.id !== editedMember.id);
+    let members = teamMembers.filter(member => member.id !== editedMember.id);
     setTeamMembers([
-      ...member,
+      ...members,
       editedMember
     ])
     setIsEditing(false)
+  }
+
+  const deleteMember = memberId => {
+    let members = teamMembers.filter(member => member.id !== memberId);
+    setTeamMembers([...members]);
   }
 
   return (
@@ -51,7 +56,10 @@ function App() {
         memberToEdit={memberToEdit} 
         addMember={addMember}
         save={save} />
-      <MemberList onEdit={editMember} members={teamMembers} />
+      <MemberList 
+        onDelete={deleteMember}
+        onEdit={editMember} 
+        members={teamMembers} />
     </Container>
   );
 }

@@ -12,13 +12,15 @@ const P = styled.p`
 `;
 
 
-const MemberItem = ({member, onEdit}) => {
+const MemberItem = ({member, onEdit, onDelete}) => {
     const { name, email, role, id } = member;
 
     const handleClick = event => {
         event.preventDefault();
         if (event.target.textContent === 'Edit') {
             onEdit(id);
+        } else {
+            onDelete(id)
         }
     }
 
