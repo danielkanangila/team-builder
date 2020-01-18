@@ -17,9 +17,9 @@ function App() {
   const [teamMembers, setTeamMembers] = useState([ defaulMember]);
 
   return (
-    <Container>
-      <MemberList members={teamMembers} />
+    <Container ___class="app">
       <MemberForm />
+      <MemberList members={teamMembers} />
     </Container>
   );
 }

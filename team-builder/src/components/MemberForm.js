@@ -10,7 +10,9 @@ import {
 } from './Utils';
 
 const Form = styled.form`
-
+    @media (min-width: 875px) {
+        width: 45%;
+    }
 `
 
 const MemberForm = props => {

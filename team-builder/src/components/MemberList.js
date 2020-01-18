@@ -5,6 +5,9 @@ import MemberItem from './MemberItem';
 const List = styled.ul`
     list-style: none;
     margin-left: -40px;
+    @media (min-width: 875px) {
+        width: 45%;
+    }
 `
 const MemberList  = ({members}) => {
     return(

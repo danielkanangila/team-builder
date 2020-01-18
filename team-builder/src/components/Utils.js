@@ -1,8 +1,24 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
+
+    ${props => (props.___class === 'app' ? 
+        `
+            @media (min-width: 875px) {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            @media (min-width: 1024px) {
+                width: 80%;
+            }
+        `
+        : null
+    )}
 `;
 
 export const Button = styled.button`
@@ -17,7 +33,8 @@ export const Button = styled.button`
          border: 1px solid red;
          color: white;
          :hover {
-             background-color: rgba(255,0,0,0.7)
+             background-color: #BA112E;
+             border-color: #BA112E;
          }
         `
         : null
@@ -63,7 +80,6 @@ export const TextField = styled.input`
 
 export const Label = styled.label`
     display: block;
-    width: 60px;
     padding: 15px 0px 1px 5px;
     text-transform: uppercase;
     font-size: 0.7rem;
