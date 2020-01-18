@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import MemberList from './components/MemberList';
 import MemberForm from './components/MemberForm';
+import { Container } from './components/Utils';
 
 const defaulMember = {
   id: 1,
@@ -13,12 +14,12 @@ const defaulMember = {
 
 function App() {
 
-  const [teamMembers, setTeamMembers] = useState([defaulMember]);
+  const [teamMembers, setTeamMembers] = useState([ defaulMember]);
 
   return (
-    <div className="App">
+    <Container>
       <MemberList members={teamMembers} />
-    </div>
+    </Container>
   );
 }
 
