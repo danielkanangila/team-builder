@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import MemberList from './components/MemberList';
 import MemberForm from './components/MemberForm';
@@ -16,9 +15,21 @@ function App() {
 
   const [teamMembers, setTeamMembers] = useState([ defaulMember]);
 
+  const addMember = newMember => {
+    const uuidv4 = require('uuid/v4');
+    newMember = {
+      ...newMember,
+      id: uuidv4(),
+    }
+    setTeamMembers([
+      ...teamMembers,
+      newMember,
+    ])
+  }
+
   return (
     <Container ___class="app">
-      <MemberForm />
+      <MemberForm addMember={addMember} />
       <MemberList members={teamMembers} />
     </Container>
   );

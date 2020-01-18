@@ -15,9 +15,15 @@ const Form = styled.form`
     }
 `
 
+const memberDefaultValue = {
+    name: '',
+    email: '',
+    role: ''
+}
+
 const MemberForm = props => {
 
-    const [member, setMember] = useState({name: '', email: '', role: ''});
+    const [member, setMember] = useState(memberDefaultValue);
 
     const handleChange = event => {
         setMember({
@@ -28,21 +34,38 @@ const MemberForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
+        props.addMember(member);
+        setMember(memberDefaultValue);
     }
 
     return(
         <Form onSubmit={handleSubmit}>
             <TextFieldWrapper>
                 <Label htmlFor="name">Name</Label>
-                <TextField onChange={handleChange} placeholder="Dan Joe" name="name" type="text" />
+                <TextField 
+                    onChange={handleChange} 
+                    placeholder="Dan Joe" 
+                    name="name"
+                    value={member.name} 
+                    type="text" />
             </TextFieldWrapper>
             <TextFieldWrapper>
                 <Label htmlFor="email">Email</Label>
-                <TextField onChange={handleChange} placeholder="dan.joe@example.com" name="email" type="email" />
+                <TextField 
+                    onChange={handleChange} 
+                    placeholder="dan.joe@example.com" 
+                    name="email" 
+                    value={member.email} 
+                    type="email" />
             </TextFieldWrapper>
             <TextFieldWrapper>
                 <Label htmlFor="role">Role</Label>
-                <TextField onChange={handleChange} name="role" placeholder="ex: admin" type="text" />
+                <TextField 
+                    onChange={handleChange} 
+                    name="role"
+                    value={member.role}  
+                    placeholder="ex: admin" 
+                    type="text" />
             </TextFieldWrapper>
             <ClearFix />
             <Button type="primary" role="submit">
