@@ -14,6 +14,8 @@ const defaulMember = {
 function App() {
 
   const [teamMembers, setTeamMembers] = useState([ defaulMember]);
+  const [memberToEdit, setMemberToEdit] = useState({name: '', email: '', role: ''});
+  const [isEditing, setIsEditing] = useState(false);
 
   const addMember = newMember => {
     const uuidv4 = require('uuid/v4');
@@ -27,10 +29,29 @@ function App() {
     ])
   }
 
+  const editMember = memberId => {
+      let member  = teamMembers.find(member => member.id === memberId);
+      setMemberToEdit(member);
+      setIsEditing(true);
+  }
+
+  const save = editedMember => {
+    let member = teamMembers.filter(member => member.id !== editedMember.id);
+    setTeamMembers([
+      ...member,
+      editedMember
+    ])
+    setIsEditing(false)
+  }
+
   return (
     <Container ___class="app">
-      <MemberForm addMember={addMember} />
-      <MemberList members={teamMembers} />
+      <MemberForm 
+        isEditing={isEditing} 
+        memberToEdit={memberToEdit} 
+        addMember={addMember}
+        save={save} />
+      <MemberList onEdit={editMember} members={teamMembers} />
     </Container>
   );
 }

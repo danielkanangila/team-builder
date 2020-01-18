@@ -20,11 +20,14 @@ const ListTitle = styled.h2`
     }
 `;
 
-const MemberList  = ({members}) => {
+const MemberList  = ({members, onEdit}) => {
     return(
         <List>
             <ListTitle>Team Members</ListTitle>
-            {members?.map(member => <MemberItem key={member.id} member={member} />)}
+            {members?.map(member => <MemberItem 
+                onEdit={onEdit} 
+                key={member.id} 
+                member={member} />)}
         </List>
     )
 }

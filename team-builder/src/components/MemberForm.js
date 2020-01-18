@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import { 
     TextField, 
@@ -23,7 +23,8 @@ const memberDefaultValue = {
 
 const MemberForm = props => {
 
-    const [member, setMember] = useState(memberDefaultValue);
+    const [member, setMember] = useState({name: '', email: '', role: ''});
+    const { memberToEdit, isEditing } = props;
 
     const handleChange = event => {
         setMember({
@@ -34,9 +35,17 @@ const MemberForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.addMember(member);
+        if (!isEditing) {
+            props.addMember(member);
+        } else {
+            props.save(member);
+        }
         setMember(memberDefaultValue);
     }
+
+    useEffect(() => {
+        setMember(memberToEdit)
+    }, [memberToEdit])
 
     return(
         <Form onSubmit={handleSubmit}>
@@ -69,8 +78,8 @@ const MemberForm = props => {
             </TextFieldWrapper>
             <ClearFix />
             <Button type="primary" role="submit">
-                <Icon className="fas fa-user-plus"></Icon>
-                Add Member
+                <Icon className={props.isEditing ? 'fas fa-save' : 'fas fa-user-plus'}></Icon>
+                {props.isEditing ? 'Save' : 'Add Member'}
             </Button>
         </Form>
     )

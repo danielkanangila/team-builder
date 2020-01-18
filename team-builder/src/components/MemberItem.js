@@ -12,19 +12,27 @@ const P = styled.p`
 `;
 
 
-const MemberItem = ({member}) => {
+const MemberItem = ({member, onEdit}) => {
     const { name, email, role, id } = member;
+
+    const handleClick = event => {
+        event.preventDefault();
+        if (event.target.textContent === 'Edit') {
+            onEdit(id);
+        }
+    }
+
     return(
         <ListItem id={id}>
             <P>Name: {name}</P>
             <P>Email: {email}</P>
             <P>Role: {role}</P>
             <ClearFix></ClearFix>
-            <Button type="edit">
+            <Button onClick={handleClick} type="edit">
                 <Icon className="fas fa-edit"></Icon>
                 Edit
             </Button>
-            <Button type="danger">
+            <Button onClick={handleClick} type="danger">
                 <Icon className="far fa-trash-alt"></Icon>
                 Delete
             </Button>
