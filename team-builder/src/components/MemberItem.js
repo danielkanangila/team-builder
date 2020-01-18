@@ -12,18 +12,18 @@ const EditButton = styled.button``;
 const DeleteButton = styled.button``; 
 
 
-const MemberItem = ({member, handleClick}) => {
+const MemberItem = ({member}) => {
     const { name, email, role, id } = member;
     return(
-        <ListItem id={id} onClick={handleClick}>
+        <ListItem id={id}>
             <P>Name: {name}</P>
             <P>Email: {email}</P>
             <P>Role: {role}</P>
             <EditButton>
-                <i className="typcn-edit"></i>
+                <i className="fas fa-edit"></i>
             </EditButton>
             <DeleteButton>
-                <i className="typcn-trash"></i>
+                <i className="far fa-trash-alt"></i>
             </DeleteButton>
         </ListItem>
     );

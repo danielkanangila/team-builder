@@ -13,7 +13,7 @@ const defaulMember = {
 
 function App() {
 
-  const [teamMembers, setTeamMembers] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([defaulMember]);
 
   return (
     <div className="App">
