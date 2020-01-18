@@ -11,33 +11,6 @@ const P = styled.p`
     line-height: 1.25;
 `;
 
-const EditButton = styled.button`
-    padding: 10px 15px;
-    border: 1px solid rgba(0,0,0,0.4);
-    color: rgba(0,0,0,0.4);
-    border-radius: 5px 0px 0 5px;
-    border-right: none;
-    transition: all .3s;
-    text-transform: uppercase;
-    :hover {
-        background: #ccc;
-        color: #000;
-    }
-`; 
-
-const DeleteButton = styled.button`
-    padding: 10px 15px;
-    border: 1px solid red;
-    border-radius: 0px 5px 5px 0px;
-    background: red;
-    color: #fff;
-    text-transform: uppercase;
-    :hover {
-        background: #ccc;
-        color: #000;
-    }
-`; 
-
 
 const MemberItem = ({member}) => {
     const { name, email, role, id } = member;
