@@ -76,6 +76,9 @@ export const TextField = styled.input`
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
+    :focus {
+        border: 1px solid #339AF0;
+    }
 `; 
 
 export const Label = styled.label`
