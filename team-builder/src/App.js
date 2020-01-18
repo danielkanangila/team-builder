@@ -19,6 +19,7 @@ function App() {
   return (
     <Container>
       <MemberList members={teamMembers} />
+      <MemberForm />
     </Container>
   );
 }

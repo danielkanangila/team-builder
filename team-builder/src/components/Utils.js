@@ -21,16 +21,24 @@ export const Button = styled.button`
          }
         `
         : null
-    )}
-    ${props => (props.type === 'edit' ?
+    )};
+    ${props => ((props.type === 'edit' || props.type === 'primary') ?
         `border-radius: 5px 0px 0 5px;
          border: 1px solid rgba(0,0,0,0.4);
          border-right: none;
-         color: rgba(0,0,0,0.4);
+         color: rgba(0,0,0,0.5);
          :hover {
             background: #ccc;
             color: #000;
         }
+        `
+        : null
+    )};
+    ${props => (props.type === 'primary' ?
+        `
+        margin-top: 15px;
+        border-radius: 5px;
+        border-right: 1px solid rgba(0,0,0,0.4);
         `
         : null
     )}
@@ -42,4 +50,27 @@ export const ClearFix = styled.div`
 
 export const Icon = styled.i`
     margin-right: 5px;
-`
+`;
+
+export const TextField = styled.input`
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+`; 
+
+export const Label = styled.label`
+    display: block;
+    width: 60px;
+    padding: 15px 0px 1px 5px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+
+`;
+
+export const TextFieldWrapper = styled.div`
+    position: relative;
+    margin-bottom: 30px;
+`;
