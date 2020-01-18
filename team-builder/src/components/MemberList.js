@@ -9,9 +9,21 @@ const List = styled.ul`
         width: 45%;
     }
 `
+
+const ListTitle = styled.h2`
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    
+    @media (min-width: 875px) {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+`;
+
 const MemberList  = ({members}) => {
     return(
         <List>
+            <ListTitle>Team Members</ListTitle>
             {members?.map(member => <MemberItem key={member.id} member={member} />)}
         </List>
     )
