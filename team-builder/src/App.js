@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <MemberList members={teamMembers} />
     </div>
   );
 }
