@@ -1,23 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from './Utils';
+import { Container, Logo } from './Utils';
 
 const Wrapper = styled.div`
+    position: fixed;
     width: 100%;
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 15px;
-`
-
-const Logo  = styled.h1`
-    margin: 0;
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.8rem;
+    background: #ffff;
+    z-index: 1000;
 `
 
 const MenuItemIcon = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 `
 
@@ -34,8 +32,17 @@ const styles = {
     },
     icon: {
         fontSize: '1.7rem'
-    }
+    },
 }
+
+const UserIcon = styled.i`
+    color: rgba(0,0,0,0.5);
+    font-size: 1.6rem;
+    transition: all .3s;
+    :hover {
+        color: rgba(0,0,0,0.7);
+    }
+`
 
 const AppBar = () => {
     const classes = styles;
@@ -49,10 +56,10 @@ const AppBar = () => {
                     </MenuText>
                 </MenuItemIcon>
                 <Logo>
-                    AdminPanel 
+                    myAdmin
                 </Logo>
                 <MenuItemIcon>
-                    <i className="fas fa-user-circle"></i>
+                    <UserIcon className="fas fa-user-circle"></UserIcon>
                     <MenuText>
                         Me
                     </MenuText>
