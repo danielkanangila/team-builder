@@ -3,8 +3,10 @@ import './App.css';
 import MemberList from './components/MemberList';
 import MemberForm from './components/MemberForm';
 import { Container } from './components/Utils';
+import AppBar from './components/AppBar';
+import Footer from './components/Footer';
 
-const defaulMember = {
+const defaultMember = {
   id: 1,
   name: 'Dan Joe',
   email: 'dan.joe@example.com',
@@ -13,7 +15,7 @@ const defaulMember = {
 
 function App() {
 
-  const [teamMembers, setTeamMembers] = useState([ defaulMember]);
+  const [teamMembers, setTeamMembers] = useState([ defaultMember]);
   const [memberToEdit, setMemberToEdit] = useState({name: '', email: '', role: ''});
   const [isEditing, setIsEditing] = useState(false);
 
@@ -50,17 +52,21 @@ function App() {
   }
 
   return (
-    <Container ___class="app">
-      <MemberForm 
-        isEditing={isEditing} 
-        memberToEdit={memberToEdit} 
-        addMember={addMember}
-        save={save} />
-      <MemberList 
-        onDelete={deleteMember}
-        onEdit={editMember} 
-        members={teamMembers} />
-    </Container>
+    <div>
+      <AppBar />
+      <Container ___class="app">
+        <MemberForm 
+          isEditing={isEditing} 
+          memberToEdit={memberToEdit} 
+          addMember={addMember}
+          save={save} />
+        <MemberList 
+          onDelete={deleteMember}
+          onEdit={editMember} 
+          members={teamMembers} />
+      </Container>
+      <Footer />
+    </div>
   );
 }
 
